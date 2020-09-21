@@ -73,7 +73,9 @@ module.exports = {
 
     try {
       var playingMessage = await queue.textChannel.send(`🎶 Started playing: **${song.title}** ${song.url}`);
-      message.guild.me.setNickname(`🎶 Started playing: **${song.title}** ${song.url}`);
+     // message.guild.setNickname(`🎶 Started playing: **${song.title}** ${song.url}`);
+      //message.guild.members.get(bot.user.id).setNickname("NEWNAMEHERE")
+      await queue.textChannel.send(`${message.guild.members.id}`);
       await playingMessage.react("⏭");
       await playingMessage.react("⏯");
       await playingMessage.react("🔇");
