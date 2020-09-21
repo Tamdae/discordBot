@@ -9,18 +9,18 @@ module.exports = {
   name: "play",
   cooldown: 3,
   aliases: ["p"],
-  description: "Plays audio from YouTube or Soundcloud",
+  description: "Reproduce audio desde YouTube o Soundcloud",
   async execute(message, args) {
     const { channel } = message.member.voice;
 
     const serverQueue = message.client.queue.get(message.guild.id);
-    if (!channel) return message.reply("You need to join a voice channel first!").catch(console.error);
+    if (!channel) return message.reply("Primero debes unirte a un canal de voz!").catch(console.error);
     if (serverQueue && channel !== message.guild.me.voice.channel)
-      return message.reply(`You must be in the same channel as ${message.client.user}`).catch(console.error);
+      return message.reply(`Primero necesitas estar en el mismo canal que ${message.client.user}`).catch(console.error);
 
     if (!args.length)
       return message
-        .reply(`Usage: ${message.client.prefix}play <YouTube URL | Video Name | Soundcloud URL>`)
+        .reply(`Uso: ${message.client.prefix}play <YouTube URL | Video Name | Soundcloud URL>`)
         .catch(console.error);
 
     const permissions = channel.permissionsFor(message.client.user);
@@ -92,14 +92,14 @@ module.exports = {
         };
       } catch (error) {
         console.error(error);
-        return message.reply("No video was found with a matching title").catch(console.error);
+        return message.reply("No ha sido encontrado ningun video con ese titulo").catch(console.error);
       }
     }
 
     if (serverQueue) {
       serverQueue.songs.push(song);
       return serverQueue.textChannel
-        .send(`✅ **${song.title}** has been added to the queue by ${message.author}`)
+        .send(`✅ ${message.author} ha añadido a la cola **${song.title}**`)
         .catch(console.error);
     }
 

@@ -74,7 +74,7 @@ module.exports = {
     try {
       var playingMessage = await queue.textChannel.send(`🎶 Started playing: **${song.title}** ${song.url}`);
       
-      await message.member.setNickname('Tamdae Bot E');
+      await message.member.setNickname('Tamdae Bot C');
       
       await playingMessage.react("⏭");
       await playingMessage.react("⏯");
