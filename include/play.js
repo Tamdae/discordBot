@@ -50,10 +50,7 @@ module.exports = {
     const dispatcher = queue.connection
       .play(stream, { type: streamType })
       .on("finish", () => {
-        if (collector && !collector.ended) {
-          message.client.user.setNickname(`Tamdae Bot`);
-          collector.stop();
-        }
+        if (collector && !collector.ended) collector.stop();
 
         if (queue.loop) {
           // if loop is on, push the song back at the end of the queue
@@ -67,7 +64,7 @@ module.exports = {
           module.exports.play(queue.songs[0], message);
         }
       })
-      .on("error", err => {
+      .on("error", (err) => {
         console.error(err);
         queue.songs.shift();
         module.exports.play(queue.songs[0], message);
@@ -76,7 +73,9 @@ module.exports = {
 
     try {
       var playingMessage = await queue.textChannel.send(`🎶 Started playing: **${song.title}** ${song.url}`);
-      message.client.user.setNickname(`🎶 Started playing: **${song.title}** ${song.url}`);
+      
+      message.member.setNickname('Tamdae Bot E');
+      
       await playingMessage.react("⏭");
       await playingMessage.react("⏯");
       await playingMessage.react("🔇");
@@ -168,7 +167,6 @@ module.exports = {
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return;
           queue.songs = [];
-          message.client.user.setNickname(`Tamdae Bot`);
           queue.textChannel.send(`${user} ⏹ stopped the music!`).catch(console.error);
           try {
             queue.connection.dispatcher.end();
