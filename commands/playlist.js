@@ -89,7 +89,7 @@ module.exports = {
         serverQueue.songs.push(song);
         if (!PRUNING)
           message.channel
-            .send(`✅ **${song.title}** has been added to the queue by ${message.author}`)
+            .send(`✅ ${message.author} ha añadido a la cola **${song.title}**`)
             .catch(console.error);
       } else {
         queueConstruct.songs.push(song);
