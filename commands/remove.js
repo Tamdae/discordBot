@@ -12,6 +12,6 @@ module.exports = {
     if (isNaN(args[0])) return message.reply(`Usage: ${message.client.prefix}remove <Queue Number>`);
 
     const song = queue.songs.splice(args[0] - 1, 1);
-    queue.textChannel.send(`${message.author} ❌ removed **${song[0].title}** from the queue.`);
+    queue.textChannel.send(`${message.author} ❌ ha eliminado **${song[0].title}** de la lista.`);
   }
 };

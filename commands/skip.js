@@ -12,6 +12,6 @@ module.exports = {
 
     queue.playing = true;
     queue.connection.dispatcher.end();
-    queue.textChannel.send(`${message.author} ⏭ skipped the song`).catch(console.error);
+    queue.textChannel.send(`${message.author} ⏭ ha saltado la cancion`).catch(console.error);
   }
 };

@@ -72,10 +72,7 @@ module.exports = {
     dispatcher.setVolumeLogarithmic(queue.volume / 100);
 
     try {
-      var playingMessage = await queue.textChannel.send(`🎶 Started playing: **${song.title}** ${song.url}`);
-      
-      await message.member.setNickname('Tamdae Bot C');
-      
+      var playingMessage = await queue.textChannel.send(`🎶 Escuchando: **${song.title}** ${song.url}`);      
       await playingMessage.react("⏭");
       await playingMessage.react("⏯");
       await playingMessage.react("🔇");

@@ -3,7 +3,7 @@ const { canModifyQueue } = require("../util/EvobotUtil");
 
 module.exports = {
   name: "stop",
-  description: "Stops the music",
+  description: "Para la musica",
   execute(message) {
     const queue = message.client.queue.get(message.guild.id);
     
@@ -12,6 +12,6 @@ module.exports = {
 
     queue.songs = [];
     queue.connection.dispatcher.end();
-    queue.textChannel.send(`${message.author} ⏹ stopped the music!`).catch(console.error);
+    queue.textChannel.send(`${message.author} ⏹ ha parado la musica!`).catch(console.error);
   }
 };

@@ -12,10 +12,10 @@ module.exports = {
     const left = song.duration - seek;
 
     let nowPlaying = new MessageEmbed()
-      .setTitle("Now playing")
+      .setTitle("Escuchando")
       .setDescription(`${song.title}\n${song.url}`)
       .setColor("#F8AA2A")
-      .setAuthor("EvoBot")
+      .setAuthor("Tamdae")
       .addField(
         "\u200b",
         new Date(seek * 1000).toISOString().substr(11, 8) +
@@ -27,7 +27,7 @@ module.exports = {
       );
 
     if (song.duration > 0)
-      nowPlaying.setFooter("Time Remaining: " + new Date(left * 1000).toISOString().substr(11, 8));
+      nowPlaying.setFooter("Tiempo Restante: " + new Date(left * 1000).toISOString().substr(11, 8));
 
     return message.channel.send(nowPlaying);
   }
